@@ -16,6 +16,7 @@ public class SpigotUtils extends JavaPlugin {
     @Override
     public void onEnable() {
         instance=this;
+        this.saveDefaultConfig();
         this.version="1.0.0";
         verRequest = new Request("http://openplugins.atspace.cc/","version.php");
 

@@ -6,11 +6,14 @@ public class ConfigAPI {
 
     public static boolean getBoolean(String location) {
 
-        if (SpigotUtils.getInstance().getConfig().getString(location).equalsIgnoreCase("true")) {
-            return true;
-        }
+        return SpigotUtils.getInstance().getConfig().getBoolean(location);
+    }
 
-        return false;
+    public static void toggleBoolean(String location) {
+
+        String result = (getBoolean(location) ? "false" : "true");
+
+        SpigotUtils.getInstance().getConfig().set(location,Boolean.valueOf(result));
     }
 
 }
