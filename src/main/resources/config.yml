@@ -1,0 +1,4 @@
+settings:
+  defaultCommands: true
+  spigotCommands: true
+  pluginCommand: true
