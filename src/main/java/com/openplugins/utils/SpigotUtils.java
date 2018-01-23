@@ -1,9 +1,12 @@
 package com.openplugins.utils;
 
 import com.openplugins.utils.command.AdminCommand;
+import com.openplugins.utils.command.CommandBlocker;
+import com.openplugins.utils.command.MiscCommands;
 import com.openplugins.utils.config.ConfigAPI;
 import com.openplugins.utils.web.Request;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class SpigotUtils extends JavaPlugin {
@@ -12,6 +15,8 @@ public class SpigotUtils extends JavaPlugin {
     private Request verRequest;
     private boolean defaultCommands, spigotCommands, pluginCommand;
     private AdminCommand adminCommand;
+    private MiscCommands miscCommands;
+    private PluginManager pluginManager;
 
     private static SpigotUtils instance;
 
@@ -34,8 +39,14 @@ public class SpigotUtils extends JavaPlugin {
         spigotCommands = ConfigAPI.getBoolean("settings.spigotCommands");
 
         adminCommand = new AdminCommand();
+        miscCommands = new MiscCommands();
 
         getCommand("update").setExecutor(adminCommand);
+        getCommand("tab").setExecutor(miscCommands);
+
+        pluginManager = Bukkit.getPluginManager();
+
+        pluginManager.registerEvents(new CommandBlocker(),this);
     }
 
     @Override
