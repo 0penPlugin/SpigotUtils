@@ -2,3 +2,6 @@ name: SpigotUtils
 version: 1.0.0
 main: com.openplugins.utils.SpigotUtils
 description: Spigot utils
+commands:
+  update:
+    description: Checks the update for the plugin.
