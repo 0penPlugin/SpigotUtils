@@ -67,6 +67,30 @@ public class AdminCommand implements CommandExecutor {
             }
         }
 
+        if (cmd.getName().equalsIgnoreCase("kick")) {
+            if (!player.hasPermission("openplugins.admin")) {
+                sendPermission(player);
+                return true;
+            }
+
+            if (args.length == 0 || args.length == 1) {
+                sendArgs(player,cmd.getName());
+                return true;
+            }
+
+            String reason = "";
+
+            for (String s : args) {
+                if (!args[0].equalsIgnoreCase(s))
+                    reason=reason + " " + s;
+            }
+
+            Player player1 = Bukkit.getPlayer(args[0]);
+
+            player1.kickPlayer(reason);
+            player.sendMessage(ChatColor.GREEN + "Kicked " + player1.getName() + " for " + ChatColor.RESET + reason);
+        }
+
         return false;
     }
 }

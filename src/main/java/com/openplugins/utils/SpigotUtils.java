@@ -42,7 +42,10 @@ public class SpigotUtils extends JavaPlugin {
         miscCommands = new MiscCommands();
 
         getCommand("update").setExecutor(adminCommand);
+        getCommand("kick").setExecutor(adminCommand);
+
         getCommand("tab").setExecutor(miscCommands);
+        getCommand("broadcast").setExecutor(miscCommands);
 
         pluginManager = Bukkit.getPluginManager();
 

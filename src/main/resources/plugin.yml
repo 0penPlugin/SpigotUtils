@@ -5,3 +5,11 @@ description: Spigot utils
 commands:
   update:
     description: Checks the update for the plugin.
+  tab:
+    description: Changes player name.
+  broadcast:
+    description: Broadcasts a message.
+    aliases: [announce,b]
+  kick:
+    description: Kick a player
+    aliases: [k,timeout]
